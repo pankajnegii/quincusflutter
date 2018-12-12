@@ -1,0 +1,55 @@
+---------------From Flutterlistview--------------------
+----------------------Starts-------------------------
+
+-drawee
+-listview
+-opening another page from drawee
+-swipe to refresh
+-use http
+-decode json data
+-tabs
+-alert
+-toast		//bgcolor not filling whole box : issue fixed in updated library(package of fluttertoast)
+-snakebar
+-drawee header: profile image, user name , email, secondary account
+-save classes in another dart file and then import them in main dart file and vice-versa
+-drawer header color change,
+-appbar color change
+-login screen with circular image logo(No methods)
+-to use string and color stored in another dart file (like 'strings.xml' or 'color.xml') via functions.
+-Notification status bar color to transparent while using Listview as  drawer
+-login screen password , show and hide password with icon click
+-display value of textformfield i.e. password using controller (on login button click)
+-use of expanded
+-use of container
+-use of row and column
+-use of future/async/await 			//use when needs to run parellel thread
+-Email and Password save and retrived using 'Shared preferences'.
+-theme, changing app bar color of whole app
+
+------------TODO-------keyboard hide when not in focus(login page)---------------
+
+-----------------------Ends-------------------------------
+
+-keyboard hiding is implemented
+-text alignment of text inside raised button, using align widget and container
+-Margin with help of padding widget
+-postion inside stack
+-Api calls for loading json data
+-showing Progress bar							(MyApiCall.dart > CircularProgressIndicator)
+-hide/show any widgets on button click
+-Dont use Navigator.pop(context); while opening page from other then drawer. (Error solved : Cannot reuse a MaterialPageRoute<dynamic> after disposing it)
+-Close the whole app : onPressed: () => exit(0),				(shipment.dart)
+-Back key press functionality using : _onWillPop()				(shipment.dart)
+-Use of custom icon , 								(shipmentdata.dart)
+-Disable landscape orientation using SystemChrome.setPreferredOrientations.	(main.dart)
+-Use of ListView.builder (same as recyclerView)					(loginapi.dart)
+-To adjust size of child inside Row by using expanded and flex.			(mapview.dart)
+-Alignment of Text using Align widget.	(Must be inside Expanded Widget)	(shipmentdata.dart)
+
+-----------------------Solved----------------------------			(shipmentdata.dart)
+Listview.builder change in one item property(setstate()) changes property of all items.
+Solution : calling another class to do define the items
+-------------------------------------------------------------
+
+-show google map static image/path direction image using API.			(Static map API page)
