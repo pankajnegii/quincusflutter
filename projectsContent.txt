@@ -45,6 +45,7 @@
 -Disable landscape orientation using SystemChrome.setPreferredOrientations.	(main.dart)
 -Use of ListView.builder (same as recyclerView)					(loginapi.dart)
 -To adjust size of child inside Row by using expanded and flex.			(mapview.dart)
+-Two or more than two Floating Action Button using Row as a child.		(mapview.dart)
 -Alignment of Text using Align widget.	(Must be inside Expanded Widget)	(shipmentdata.dart)
 
 -----------------------Solved----------------------------			(shipmentdata.dart)

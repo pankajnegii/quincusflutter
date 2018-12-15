@@ -23,7 +23,7 @@ class MyStaticMapImage extends StatefulWidget {
 
 class _MyStaticMapImage extends State<MyStaticMapImage> {
 
-  static String googleMapsApiKey = 'AIzaSyCpWqOAedyjTGkHzsq068wQUQ_lr44UWbI';
+  static String googleMapsApiKey = 'AIzaSyAS3DdV0wOKn-OCuVVj5BHKAuduWrbooQc';
   User user = new User('https://maps.googleapis.com/maps/api/staticmap?center=37.0902%2C-95.7192&zoom=4&size=400x600&key=$googleMapsApiKey');
 
   @override
@@ -61,7 +61,7 @@ class _MyStaticMapImage extends State<MyStaticMapImage> {
                 .size
                 .width,
             child:
-              new Image.network(user.name, fit: BoxFit.cover,),
+            new Image.network('https://maps.googleapis.com/maps/api/staticmap?center=37.0902%2C-95.7192&zoom=4&size=600x400&key=$googleMapsApiKey'),
           ),
         ],
       ),
@@ -71,7 +71,7 @@ class _MyStaticMapImage extends State<MyStaticMapImage> {
    Future<Null> CreateMapImage(){
 
 
-    Future<User> overViewPolyLine = getUser('https://maps.googleapis.com/maps/api/directions/json?origin=28.6419017,77.320441&destination=28.630896,%2077.286937&mode=driving&key=AIzaSyCpWqOAedyjTGkHzsq068wQUQ_lr44UWbI');
+    Future<User> overViewPolyLine = getUser('https://maps.googleapis.com/maps/api/directions/json?origin=28.6419017,77.320441&destination=28.630896,%2077.286937&mode=driving&key=$googleMapsApiKey');
     return overViewPolyLine.then((_user){
       print(user.name);
       setState(() => user = _user);//To check the response
@@ -94,7 +94,7 @@ class User {
     print(fullName);          //To check the response
     String mapImageUri = Uri.encodeFull(fullName);
     print(mapImageUri);               //To check the response
-    fullName = 'http://maps.googleapis.com/maps/api/staticmap?sensor=false&size=400x600&path=weight:3%7Ccolor:0x00b3fd%7Cenc:' + fullName + '&key=AIzaSyCpWqOAedyjTGkHzsq068wQUQ_lr44UWbI';
+    fullName = 'http://maps.googleapis.com/maps/api/staticmap?sensor=false&size=400x600&path=weight:3%7Ccolor:0x00b3fd%7Cenc:' + fullName + '&key=AIzaSyAS3DdV0wOKn-OCuVVj5BHKAuduWrbooQc';
     print(fullName);          //To check the response
     return User(fullName);
   }
@@ -103,6 +103,6 @@ class User {
 Future<User> getUser(String apiUrl) async {
   final response = await http.get(apiUrl);
   final responseJson = json.decode(response.body);
-  //print(response.body);             //To check the response
+  print(response.body);             //To check the response
   return User.fromJson(responseJson);
 }
