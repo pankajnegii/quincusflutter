@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'package:http/http.dart' as http;
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'shipment.dart';
@@ -20,6 +21,7 @@ class MyLoginPageAPI extends StatefulWidget {
 class _LoginPageAPI extends State<MyLoginPageAPI> {
 
   bool _obscureText = true;
+  bool loginSuccessful = false;
 
   // String _password = "";
   final TextEditingController controllerPassword = new TextEditingController(
@@ -112,8 +114,10 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
           ),
           Expanded(
               flex: 1,
-              child: new IconButton(icon: _obscureText ? Icon(Icons.visibility_off) : Icon(Icons.visibility,
-                  color: boxBorder()),
+              child: new IconButton(
+                icon: _obscureText ? Icon(Icons.visibility_off) : Icon(
+                    Icons.visibility,
+                    color: boxBorder()),
                 onPressed: _toggle,
                 padding: EdgeInsets.fromLTRB(15.0, 8.0, 15.0, 8.0),
               )
@@ -166,6 +170,26 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
         )
     );
 
+    final loginApiCallOrProgressBar =
+    loginSuccessful ? Center(
+        child:
+        FutureBuilder<Post>(
+          future: fetchPost(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {     //TODO
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) =>
+                      MyShipmentPage()));
+              return Text(snapshot.data.token);
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            // By default, show a loading spinner
+            return CircularProgressIndicator();
+          },
+        )
+    ) : new Container();
+
     //
 
     return Scaffold(
@@ -184,20 +208,23 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
               ),
             ),
             child: Center(
-              child:
-              FutureBuilder<Post>(
-                future: fetchPost(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(snapshot.data.username);
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-
-                  // By default, show a loading spinner
-                  return CircularProgressIndicator();
-                },
-              )
+                child:
+                ListView(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(left: 24.0, right: 24.0),
+                  children: <Widget>[
+                    logo,
+                    email,
+                    SizedBox(height: 8.0),
+                    password,
+                    SizedBox(height: 8.0),
+                    loginButton,
+                    SizedBox(height: 8.0),
+                    forgotLabel,
+                    SizedBox(height: 8.0),
+                    loginApiCallOrProgressBar,
+                  ],
+                ),
 
               /*ListView(
                 shrinkWrap: true,
@@ -229,7 +256,7 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
   void _checkLoginSuccess() async {
     //To save login id and password
     SharedPreferences prefSave = await SharedPreferences.getInstance();
-    prefSave.setString('email2', 'driver12');
+    prefSave.setString('email2', 'driver7');
     prefSave.setString('password2', 'oranges123');
     //
 
@@ -269,12 +296,16 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
 
   //for login check
   Future<Post> fetchPost() async {
+    //Map<String, String> params = new Map();
+
     final response =
-    await http.get('http://api.bluerhino.quincus.com/');
+    await http.post('http://api.bluerhino.quincus.com/api-token-auth/',
+        body: {"username": "driver7", "password": "oranges23"});
 
     if (response.statusCode == 200) {
       // If server returns an OK response, parse the JSON
       print(response.body);
+
       return Post.fromJson(json.decode(response.body));
     } else {
       // If that response was not OK, throw an error.
