@@ -54,3 +54,6 @@ Solution : calling another class to do define the items
 -------------------------------------------------------------
 
 -show google map static image/path direction image using API.			(Static map API page)
+
+
+-Quincus login successful using login API					(loginapi.dart)
