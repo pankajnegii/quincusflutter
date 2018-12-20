@@ -156,7 +156,10 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
       onPressed: () {
         SystemChannels.textInput.invokeMethod(
             'TextInput.hide'); //to hide keyboard when clicked outside
-        _checkLoginSuccess();
+        setState(() {
+          loginSuccessful = true;
+        });
+        fetchPost();
       },
 
     );
@@ -171,24 +174,14 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
     );
 
     final loginApiCallOrProgressBar =
-    loginSuccessful ? Center(
-        child:
-        FutureBuilder<Post>(
-          future: fetchPost(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {     //TODO
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context) =>
-                      MyShipmentPage()));
-              return Text(snapshot.data.token);
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            // By default, show a loading spinner
-            return CircularProgressIndicator();
-          },
-        )
-    ) : new Container();
+    Center (
+    child:
+    SizedBox( height: 35.0,
+      child:
+        loginSuccessful? CircularProgressIndicator(value: 3.0,) :  new Container()
+    )
+
+    ) ;
 
     //
 
@@ -211,7 +204,7 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
                 child:
                 ListView(
                   shrinkWrap: true,
-                  padding: EdgeInsets.only(left: 24.0, right: 24.0),
+                  padding: EdgeInsets.only(left: 24.0, right: 24.0 ,top: 50),
                   children: <Widget>[
                     logo,
                     email,
@@ -221,7 +214,6 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
                     loginButton,
                     SizedBox(height: 8.0),
                     forgotLabel,
-                    SizedBox(height: 8.0),
                     loginApiCallOrProgressBar,
                   ],
                 ),
@@ -253,9 +245,11 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
     });
   }
 
-  void _checkLoginSuccess() async {
+  void _checkLoginSuccess()  {
+
+
     //To save login id and password
-    SharedPreferences prefSave = await SharedPreferences.getInstance();
+   /* SharedPreferences prefSave = await SharedPreferences.getInstance();
     prefSave.setString('email2', 'driver7');
     prefSave.setString('password2', 'oranges123');
     //
@@ -272,7 +266,7 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
     }
     else {
       _showToast("Some Login Issue");
-    }
+    }*/
   }
 
   void _showToast(String text) {
@@ -295,18 +289,19 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
 
 
   //for login check
-  Future<Post> fetchPost() async {
-    //Map<String, String> params = new Map();
-
+  Future<Null> fetchPost() async {
+    
     final response =
     await http.post('http://api.bluerhino.quincus.com/api-token-auth/',
-        body: {"username": "driver7", "password": "oranges23"});
+        body: {"username": "driver7", "password": "oranges123"});
 
     if (response.statusCode == 200) {
-      // If server returns an OK response, parse the JSON
-      print(response.body);
 
-      return Post.fromJson(json.decode(response.body));
+      print(response.body);
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) =>
+              MyShipmentPage()));
+
     } else {
       // If that response was not OK, throw an error.
       throw Exception('Failed to load post');
