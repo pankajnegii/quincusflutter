@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'login.dart';
+import 'loginapi.dart';
+import 'shipment.dart';
 import 'values.dart';
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main(){
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
@@ -10,9 +15,16 @@ void main(){
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  bool alreadyLogin =false;
+  @override
+  void init(){
+    //checkSharedPreferences();
+    print("INIT called ");
+  }
+
   @override
   Widget build(BuildContext context) {
-
+    checkSharedPreferences(context);
     return MaterialApp(
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -28,8 +40,21 @@ class MyApp extends StatelessWidget {
         primaryColor: themeColor(),
         buttonColor: Colors.blue,
       ),
-      home: MyLoginPage(),
+      home:
+
+      alreadyLogin ? MyLoginPageAPI() : MyShipmentPage(),
     );
+  }
+
+  void checkSharedPreferences(BuildContext context) async {
+
+    SharedPreferences prefSave = await SharedPreferences.getInstance();
+    String email = prefSave.get('email2');
+    print(email);
+    if(email!= Null){
+      alreadyLogin = true;
+    }
+
   }
 }
 

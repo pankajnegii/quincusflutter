@@ -21,7 +21,7 @@ class MyLoginPageAPI extends StatefulWidget {
 class _LoginPageAPI extends State<MyLoginPageAPI> {
 
   bool _obscureText = true;
-  bool loginSuccessful = false;
+  bool tryLogin = false;
 
   // String _password = "";
   final TextEditingController controllerPassword = new TextEditingController(
@@ -157,7 +157,7 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
         SystemChannels.textInput.invokeMethod(
             'TextInput.hide'); //to hide keyboard when clicked outside
         setState(() {
-          loginSuccessful = true;
+          tryLogin = true;
         });
         fetchPost();
       },
@@ -178,7 +178,7 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
     child:
     SizedBox( height: 35.0,
       child:
-        loginSuccessful? CircularProgressIndicator(value: 3.0,) :  new Container()
+      tryLogin? CircularProgressIndicator(strokeWidth: 3.0, backgroundColor: buttonColor(),) :  new Container()
     )
 
     ) ;
@@ -239,6 +239,8 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
   }
 
 //--------------Methods---------------------
+
+  //To hide/show password......
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
@@ -293,10 +295,14 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
     
     final response =
     await http.post('http://api.bluerhino.quincus.com/api-token-auth/',
-        body: {"username": "driver7", "password": "oranges123"});
+        body: {"username": controllerEmail.text, "password": controllerPassword.text});
 
     if (response.statusCode == 200) {
 
+      SharedPreferences prefSave = await SharedPreferences.getInstance();
+      prefSave.setString('email2', controllerPassword.text);
+      prefSave.setString('password2', controllerPassword.text);
+      _showToast("Successfully Login");
       print(response.body);
       Navigator.push(context, MaterialPageRoute(
           builder: (context) =>
@@ -304,7 +310,13 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
 
     } else {
       // If that response was not OK, throw an error.
+      print('Failed to load post');
+      _showToast("Invalid Credentials");
+      setState(() {
+        tryLogin = false;
+      });
       throw Exception('Failed to load post');
+
     }
   }
 

@@ -207,12 +207,12 @@ class _ShipmentPage extends State<MyShipmentPage> {
             content: new Text('Your app will be closed.'),
             actions: <Widget>[
               new FlatButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: new Text('No'),
-              ),
-              new FlatButton(
                 onPressed: () => exit(0),//Navigator.of(context).pop(true),
                 child: new Text('Yes'),
+              ),
+              new FlatButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: new Text('No'),
               ),
             ],
           );

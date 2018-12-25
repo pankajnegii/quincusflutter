@@ -1,3 +1,7 @@
+import 'dart:io';
+import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:flutter/material.dart';
 import 'shipmentdata.dart';
 import 'login.dart';
@@ -9,6 +13,7 @@ import 'loginapi.dart';
 import 'mappage.dart';
 import 'homepage.dart';
 import 'static_map_image.dart';
+
 class MyDrawer extends StatelessWidget {
   static const String _AccountName = 'Pankaj Negi';
   static const String _AccountEmail = 'test@examples.com';
@@ -59,7 +64,8 @@ class MyDrawer extends StatelessWidget {
             leading: Icon(Icons.access_time),
             title: Text('DashBoard'),
             onTap: () {
-              Navigator.pop(context);       // this line closes(pop) the drawer, not the page
+              Navigator.pop(
+                  context); // this line closes(pop) the drawer, not the page
               Navigator.push(context, MaterialPageRoute(
                   builder: (context) =>
                       MyShipmentPage()));
@@ -89,10 +95,32 @@ class MyDrawer extends StatelessWidget {
             leading: Icon(Icons.power_settings_new),
             title: Text('Logout'),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (context) =>
-                      MyHomePage(title: 'My home page')));
+              //Navigator.pop(context);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return new AlertDialog(
+                      title: new Text('Are you sure?'),
+                      content: new Text('You will be logged out.'),
+                      actions: <Widget>[
+                        new FlatButton(
+                          onPressed: () {
+
+                            clearSharedPreferences();
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) =>
+                                    MyLoginPageAPI()));
+                          },
+                          child: new Text('Yes'),
+                        ),
+                        new FlatButton(
+                          onPressed: () => Navigator.of(context).pop(false),
+                          child: new Text('No'),
+                        ),
+                      ],
+                    );
+                  }
+              );
             },
           ),
           Divider(
@@ -164,6 +192,14 @@ class MyDrawer extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void clearSharedPreferences() async {
+
+    SharedPreferences prefSave = await SharedPreferences.getInstance();
+    prefSave.clear();
+
+    //exit(0);
   }
 
 /*_onTapOtherAccounts(BuildContext context) {
