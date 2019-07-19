@@ -189,8 +189,8 @@ class _ShipmentPage extends State<MyShipmentPage> {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIos: 1,
-      bgcolor: '#3EA7DC',
-      textcolor: '#FFFFFF',
+      /*bgcolor: '#3EA7DC',
+      textcolor: '#FFFFFF',*/
     );
     Navigator.push(context, MaterialPageRoute(
         builder: (context) =>

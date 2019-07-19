@@ -236,8 +236,8 @@ class _LoginPage extends State<MyLoginPage> {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIos: 1,
-      bgcolor: '#3EA7DC',
-      textcolor: '#FFFFFF',
+      /*bgcolor: '#3EA7DC',
+      textcolor: '#FFFFFF',*/
     );
   }
 

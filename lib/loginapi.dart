@@ -277,8 +277,9 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIos: 1,
-      bgcolor: '#3EA7DC',
-      textcolor: '#FFFFFF',
+      backgroundColor: Color(0xFF3EA7DC),
+      textColor: Colors.white,
+
     );
   }
 

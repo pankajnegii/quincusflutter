@@ -146,7 +146,7 @@ class _MapView extends State<MyMapView> {
                       children: <Widget>[
 
                         Expanded(
-                          flex: 4, //to adjust size
+                          flex: 7, //to adjust size
                           child: Padding(
                             padding: EdgeInsets.only(right: 20.0),
                             child: new Text(
@@ -156,7 +156,7 @@ class _MapView extends State<MyMapView> {
                         ),
 
                         Expanded(
-                          flex: 1,
+                          flex: 2,
                           child: new RaisedButton(
 
                             padding: EdgeInsets.only(
@@ -407,8 +407,8 @@ class _MapView extends State<MyMapView> {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIos: 1,
-      bgcolor: '#3EA7DC',
-      textcolor: '#FFFFFF',
+      backgroundColor: Color(0xFF3EA7DC),
+      textColor: Colors.white,
     );
   }
 
