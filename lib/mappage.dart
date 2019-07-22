@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:intl/intl.dart';
 
 import 'drawerclass.dart';
 import 'values.dart';
@@ -143,42 +144,7 @@ class _MapPage extends State<MyMapPage> {
               onPressed: () {
                 _getCurrentLocation();
 
-                //test on 19-07-2019
-                // Create a new marker
-               /* Marker resultMarker = Marker(
-                  markerId: MarkerId("1"),
-                  infoWindow: InfoWindow(
-                      title: "Title here",
-                      snippet: "Content here"),
-                  position: LatLng(28.6419017, 77.3204413),
-                  icon: BitmapDescriptor.defaultMarkerWithHue(
-                    BitmapDescriptor.hueBlue),
-                );
-                // Add it to Set
-                markers.add(resultMarker);*/
 
-                /*// Create a new marker
-                Marker resultMarker = Marker(
-                  markerId: MarkerId(responseResult.name),
-                  infoWindow: InfoWindow(
-                      title: "${responseResult.name}",
-                      snippet: "${responseResult.types?.first}"),
-                  position: LatLng(responseResult.geometry.location.lat,
-                      responseResult.geometry.location.lng),
-                );
-                // Add it to Set
-                markers.add(resultMarker);
-                */
-
-
-               /* googleMapController.addMarker(
-                  MarkerOptions(
-                    position: LatLng(37.4219999, -122.0862462),
-                    infoWindowText: InfoWindowText("Title", "Content"),
-                    icon: BitmapDescriptor.defaultMarkerWithHue(
-                        BitmapDescriptor.hueBlue),
-                  ),
-                );*/
               },
             ),
           ],
@@ -265,14 +231,17 @@ class _MapPage extends State<MyMapPage> {
     Marker resultMarker = Marker(
       markerId: MarkerId(position.latitude.toString()),
       infoWindow: InfoWindow(
-          title: "Title here",
-          snippet: "Content here"),
+          title: "At " + DateFormat('HH:mm').format(DateTime.now()),
+          snippet: placemark[0].name + placemark[0].subLocality +  placemark[0].administrativeArea),
       position: LatLng(position.latitude,position.longitude),
       icon: BitmapDescriptor.defaultMarkerWithHue(
           BitmapDescriptor.hueGreen),
     );
     // Add it to Set
     markers.add(resultMarker);
+    setState(() {
+
+    });
     //googleMapController.removeMarker(marker)
   }
 }

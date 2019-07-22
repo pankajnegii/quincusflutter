@@ -313,6 +313,9 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
       // If that response was not OK, throw an error.
       print('Failed to load post');
       _showToast("Invalid Credentials");
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) =>
+              MyShipmentPage()));
       setState(() {
         tryLogin = false;
       });
