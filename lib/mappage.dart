@@ -214,17 +214,17 @@ class _MapPage extends State<MyMapPage> {
     print(position.longitude);
     List<Placemark> placemark = await Geolocator()
         .placemarkFromCoordinates(position.latitude, position.longitude);
-    print(placemark[0].position); //Lat: 28.630382899999997, Long: 77.2861467
-    print(placemark[0].isoCountryCode); //IN
-    print(placemark[0].country); //India
-    print(placemark[0].name); //Patparganj Road
-    print(placemark[0].postalCode); //110092
-    print(placemark[0].administrativeArea); //Delhi
-    print(placemark[0].subAdministrativeArea); //East Delhi
-    print(placemark[0].locality); //New Delhi
-    print(placemark[0].subLocality); //Shakarpur Khas
-    print(placemark[0].thoroughfare); //Patparganj Road
-    print(placemark[0].subThoroughfare); //  NULL
+    print("position : " + placemark[0].position.toString()); //Lat: 28.630382899999997, Long: 77.2861467
+    print("isoCountryCode : " + placemark[0].isoCountryCode); //IN
+    print("country : " + placemark[0].country); //India
+    print("name : " + placemark[0].name); //Patparganj Road
+    print("postalCode : " + placemark[0].postalCode); //110092
+    print("administrativeArea : " + placemark[0].administrativeArea); //Delhi
+    print("subAdministrativeArea : " + placemark[0].subAdministrativeArea); //East Delhi
+    print("locality : " + placemark[0].locality); //New Delhi
+    print("subLocality : " + placemark[0].subLocality); //Shakarpur Khas
+    print("thoroughfare : " + placemark[0].thoroughfare); //Patparganj Road
+    print("subThoroughfare : " + placemark[0].subThoroughfare); //  NULL
 
     //test on 19-07-2019
     // Create a new marker
