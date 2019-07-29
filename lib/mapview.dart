@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'drawerclass.dart';
@@ -36,7 +35,8 @@ class _MapView extends State<MyMapView> {
                 color: greenColor(),
                 child: Text(
                   'COMPLETE',
-                  style: TextStyle(fontSize: sdp(18.0), fontWeight: FontWeight.w400),
+                  style: TextStyle(
+                      fontSize: sdp(18.0), fontWeight: FontWeight.w400),
                 ),
                 onPressed: () {
                   _showToast("Complete Button is clicked", greenColor());
@@ -45,7 +45,10 @@ class _MapView extends State<MyMapView> {
             ),
             RaisedButton(
               padding: EdgeInsets.only(
-                  left: sdp(10.0), right: sdp(10.0), top: sdp(10.0), bottom: sdp(10.0)),
+                  left: sdp(10.0),
+                  right: sdp(10.0),
+                  top: sdp(10.0),
+                  bottom: sdp(10.0)),
               shape: CircleBorder(side: BorderSide.none),
               color: Colors.red,
               child: Text(
@@ -80,8 +83,7 @@ class _MapView extends State<MyMapView> {
                   maxHeight: visibilityDetails ? sdp(345.0) : sdp(222.0),
                   maxWidth: sdp(440.0),
                   minWidth: sdp(150.0),
-                  minHeight: sdp(150.0)
-              ),
+                  minHeight: sdp(150.0)),
               //padding: EdgeInsets.only(left: 24.0, right: 24.0),
               child: Column(
                 children: <Widget>[
@@ -94,13 +96,11 @@ class _MapView extends State<MyMapView> {
                         Column(
                           children: <Widget>[
                             new Padding(
-                              padding: EdgeInsets.only(
-                                  left: sdp(2.0)),
+                              padding: EdgeInsets.only(left: sdp(2.0)),
                               child: new Text(
                                 'Pang Bo', //TODO align this text to left corner
                                 style: TextStyle(
-                                    fontSize: sdp(20.0),
-                                    color: Colors.white),
+                                    fontSize: sdp(20.0), color: Colors.white),
                                 textAlign: TextAlign.start,
                               ),
                             ),
@@ -114,8 +114,7 @@ class _MapView extends State<MyMapView> {
                                 child: new Text(
                                   'Delivery',
                                   style: TextStyle(
-                                      fontSize: sdp(18.0),
-                                      color: Colors.green),
+                                      fontSize: sdp(18.0), color: Colors.green),
                                 ),
                               ),
                               Align(
@@ -174,8 +173,8 @@ class _MapView extends State<MyMapView> {
                                 bottom: sdp(20.0)),
                             shape: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(sdp(5.0)),
-                              borderSide:
-                                  BorderSide(color: greenColor(), width: sdp(1.0)),
+                              borderSide: BorderSide(
+                                  color: greenColor(), width: sdp(1.0)),
                             ),
                             /*shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0),),*/
@@ -216,12 +215,15 @@ class _MapView extends State<MyMapView> {
                                   child: Text(
                                     'Packages',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: sdp(13.0)),
+                                        color: Colors.white,
+                                        fontSize: sdp(13.0)),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
+                                      top: sdp(10.0),
+                                      right: sdp(10.0),
+                                      left: sdp(10.0)),
                                   child: Container(
                                     height: sdp(45.0),
                                     width: sdp(45.0),
@@ -261,12 +263,15 @@ class _MapView extends State<MyMapView> {
                                   child: Text(
                                     'ETA',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: sdp(13.0)),
+                                        color: Colors.white,
+                                        fontSize: sdp(13.0)),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
+                                      top: sdp(10.0),
+                                      right: sdp(10.0),
+                                      left: sdp(10.0)),
                                   child: Container(
                                     height: sdp(45.0),
                                     width: sdp(75.0),
@@ -304,12 +309,15 @@ class _MapView extends State<MyMapView> {
                                   child: Text(
                                     'Commit',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: sdp(13.0)),
+                                        color: Colors.white,
+                                        fontSize: sdp(13.0)),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
+                                      top: sdp(10.0),
+                                      right: sdp(10.0),
+                                      left: sdp(10.0)),
                                   child: Container(
                                     height: sdp(45.0),
                                     width: sdp(75.0),
@@ -347,12 +355,15 @@ class _MapView extends State<MyMapView> {
                                   child: Text(
                                     'Start',
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: sdp(13.0)),
+                                        color: Colors.white,
+                                        fontSize: sdp(13.0)),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsets.only(
-                                      top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
+                                      top: sdp(10.0),
+                                      right: sdp(10.0),
+                                      left: sdp(10.0)),
                                   child: Container(
                                     height: sdp(45.0),
                                     width: sdp(75.0),
@@ -427,6 +438,12 @@ class _MapView extends State<MyMapView> {
   //test
 
   void _showToast(String text, Color bgColor) {
+    print("maxHeight1 345 : " + sdp(345).toString());
+    print("maxHeight2 222 : " + sdp(222).toString());
+    print("maxWidth 440" + sdp(440).toString());
+    print("minWidth 150: " + sdp(150).toString());
+    print("minHeight 150 : " + sdp(150).toString());
+
     Fluttertoast.showToast(
       msg: text,
       toastLength: Toast.LENGTH_SHORT,
