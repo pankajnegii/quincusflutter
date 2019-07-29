@@ -24,6 +24,7 @@ class _ShipmentPage extends State<MyShipmentPage> {
 
     print("devicePixelRatio : " + MediaQuery.of(context).devicePixelRatio.toString());
     print("size.aspectRatio : " + MediaQuery.of(context).size.aspectRatio.toString());
+    print("size" + MediaQuery.of(context).size.toString());
     //fill in the screen size of the device in the design
 
     //default value : width : 1080px , height:1080px , allowFontScaling:false

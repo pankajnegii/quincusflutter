@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 //Using classes
 /*class myColor {                 //To be tested
@@ -60,4 +62,8 @@ Color transparentBlack60(){
 
 Color transparentBlack80(){
   return Color(0x73000000);
+}
+
+double sdp(double pocoDp){
+  return ScreenUtil().setSp(pocoDp*2.75);       //Here 2.75 is the devicePixelRatio (MediaQuery.of(context).devicePixelRatio)
 }
