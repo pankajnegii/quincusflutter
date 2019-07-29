@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'shipment.dart';
 import 'values.dart';
@@ -33,6 +34,19 @@ class _LoginPageAPI extends State<MyLoginPageAPI> {
 
 
   Widget build(BuildContext context) {
+
+    //TODO Help : https://pub.dev/packages/flutter_screenutil#-readme-tab-
+    //fill in the screen size of the device in the design
+
+    //default value : width : 1080px , height:1080px , allowFontScaling:false
+    //ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+
+    //If the design is based on the size of the Poco f1 ​​(Poco f1 1080*2246)
+    //ScreenUtil.instance = ScreenUtil(width: 1080 , height: 2246)..init(context);
+
+    //If you wang to set the font size is scaled according to the system's "font size" assist option
+    ScreenUtil.instance = ScreenUtil(width: 1080, height: 2246, allowFontScaling: true)..init(context);
+
     //Something new here
     final logo = Center( //Center is also used to be able to change the container size irrespective of other childs.
         child: Container(

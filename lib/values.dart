@@ -25,18 +25,27 @@ Color appBarColor() {
 Color buttonColor() {
   return boxBorder();
 }
+
 Color editTextColor(){
   return Color(0xFFFFFFFF);
 }
+
 Color hintColor(){
   return Color(0xFFD2D4D3);
 }
+
 Color boxBorder(){
   return Color(0xFF3EA7DC);
 }
+
+Color white(){
+  return Color(0xFFFFFFFF);
+}
+
 Color greenColor(){
   return Color(0xFF2CA260);
 }
+
 Color pageBackground(){
   return Color(0xFF1D1D1D);
 }

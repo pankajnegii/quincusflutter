@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'drawerclass.dart';
 import 'shipmentdata.dart';
@@ -18,6 +19,22 @@ class MyShipmentPage extends StatefulWidget {
 class _ShipmentPage extends State<MyShipmentPage> {
 
   Widget build(BuildContext context) {
+
+    //TODO Help : https://pub.dev/packages/flutter_screenutil#-readme-tab-
+
+    print("devicePixelRatio : " + MediaQuery.of(context).devicePixelRatio.toString());
+    print("size.aspectRatio : " + MediaQuery.of(context).size.aspectRatio.toString());
+    //fill in the screen size of the device in the design
+
+    //default value : width : 1080px , height:1080px , allowFontScaling:false
+    //ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
+
+    //If the design is based on the size of the Poco f1 ​​(Poco f1 1080*2246)
+    ScreenUtil.instance = ScreenUtil(width: 1080 , height: 2246)..init(context);
+
+    //If you wang to set the font size is scaled according to the system's "font size" assist option
+    //ScreenUtil.instance = ScreenUtil(width: 1080, height: 2246, allowFontScaling: true)..init(context);
+
     return WillPopScope(
       onWillPop: _onWillPop,
       child: new Scaffold(
@@ -189,8 +206,8 @@ class _ShipmentPage extends State<MyShipmentPage> {
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIos: 1,
-      /*bgcolor: '#3EA7DC',
-      textcolor: '#FFFFFF',*/
+      backgroundColor: greenColor(),
+      textColor: Colors.white,
     );
     Navigator.push(context, MaterialPageRoute(
         builder: (context) =>
