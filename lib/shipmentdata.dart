@@ -63,8 +63,7 @@ class _ShipmentItem extends State<MyShipmentItem> {
   Widget build(BuildContext context) {
     return Container( ////
       margin: EdgeInsets.only(bottom: sdp(10.0)),
-      padding: EdgeInsets.only(
-          left: sdp(10.0), right: sdp(10.0), top: sdp(10.0)),
+      padding: EdgeInsets.all(sdp(10.0)),
       color: Color(0xAA000000),
       // a bit whitish to match background
       /*constraints: BoxConstraints(

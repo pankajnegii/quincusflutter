@@ -60,7 +60,7 @@ class _ShipmentPage extends State<MyShipmentPage> {
             ),
             Padding(
               //alignment: Alignment.center,
-              padding: EdgeInsets.only(top: sdp(200.0), left: sdp(10.0)),
+              padding: EdgeInsets.only(top: sdp(150.0), left: sdp(10.0)),
               child: Row( //Row 2
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[

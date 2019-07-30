@@ -77,7 +77,7 @@ class _MapView extends State<MyMapView> {
             alignment: AlignmentDirectional(-1.0, -1.0),
             //To align the child at the topic
             child: Container(
-              //padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+              //padding: EdgeInsets.only(bottom: sdp(2)),
               color: transparentBlack60(),
               /*constraints: BoxConstraints(
                   maxHeight: visibilityDetails ? sdp(345.0) : sdp(222.0),
