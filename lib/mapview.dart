@@ -79,13 +79,14 @@ class _MapView extends State<MyMapView> {
             child: Container(
               //padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
               color: transparentBlack60(),
-              constraints: BoxConstraints(
+              /*constraints: BoxConstraints(
                   maxHeight: visibilityDetails ? sdp(345.0) : sdp(222.0),
                   maxWidth: sdp(440.0),
                   minWidth: sdp(150.0),
-                  minHeight: sdp(150.0)),
+                  minHeight: sdp(150.0)),*/
               //padding: EdgeInsets.only(left: 24.0, right: 24.0),
               child: Column(
+                mainAxisSize: MainAxisSize.min,         //height as wrap content
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(sdp(10.0)),

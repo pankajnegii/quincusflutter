@@ -1,11 +1,8 @@
-import 'dart:io';
-import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
 import 'shipmentdata.dart';
 import 'login.dart';
-import 'main.dart';
 import 'shipment.dart';
 import 'values.dart';
 import 'MyApiCall.dart';
@@ -37,8 +34,8 @@ class MyDrawer extends StatelessWidget {
             accountName: const Text(_AccountName),
             accountEmail: const Text(_AccountEmail),
             currentAccountPicture: new Container( //for circular image
-                width: 190.0,
-                height: 190.0,
+                width: sdp(190.0),
+                height: sdp(190.0),
                 decoration: new BoxDecoration(
                     shape: BoxShape.circle,
                     image: new DecorationImage(
@@ -125,7 +122,7 @@ class MyDrawer extends StatelessWidget {
           ),
           Divider(
             color: Colors.black87,
-            height: 2.0,
+            height: sdp(2.0),
           ),
           ListTile(
             leading: Icon(Icons.home),

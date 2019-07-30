@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'drawerclass.dart';
 import 'mapview.dart';
@@ -26,7 +25,7 @@ class _ShipmentData extends State<MyShipmentData> {
         Center( //
           child:
           new Container(
-            padding: EdgeInsets.only(left: 10.0 , right: 10.0 , top: 10.0,),
+            padding: EdgeInsets.only(left: sdp(10.0) , right: sdp(10.0) , top: sdp(10.0),),
             decoration: new BoxDecoration(
               image: new DecorationImage(
                 image: new AssetImage("assets/bg.png"),
@@ -63,21 +62,21 @@ class _ShipmentItem extends State<MyShipmentItem> {
 
   Widget build(BuildContext context) {
     return Container( ////
-      margin: EdgeInsets.only(bottom: 10.0),
+      margin: EdgeInsets.only(bottom: sdp(10.0)),
       padding: EdgeInsets.only(
-          left: 10.0, right: 10.0, top: 10.0),
+          left: sdp(10.0), right: sdp(10.0), top: sdp(10.0)),
       color: Color(0xAA000000),
       // a bit whitish to match background
-      constraints: BoxConstraints(
+      /*constraints: BoxConstraints(
           maxHeight: _visibilityDetails ? 350.0 : 225,
           maxWidth: 440.0,
           minWidth: 150.0,
           minHeight: 150.0
-      ),
+      ),*/
 
       //padding: EdgeInsets.only(left: 24.0, right: 24.0),
       child: Column(
-
+        mainAxisSize: MainAxisSize.min,         //height as wrap content
         children: <Widget>[
 
           Row(
@@ -89,14 +88,14 @@ class _ShipmentItem extends State<MyShipmentItem> {
                 child: Column(
                   children: <Widget>[
                     new Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: EdgeInsets.only(left: sdp(10.0)),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: new Text(
                             'Pang Bo',
                             //TODO align this text to left corner
                             style: TextStyle(
-                                fontSize: 20.0,
+                                fontSize: sdp(20.0),
                                 color: Colors.white),
                             textAlign: TextAlign.start,),
                         )
@@ -104,7 +103,7 @@ class _ShipmentItem extends State<MyShipmentItem> {
 
                     new Padding(
                       padding: EdgeInsets.only(
-                          top: 10.0, left: 10.0),
+                          top: sdp(10.0), left: sdp(10.0)),
                       child: new Text(
                         '1 SERANGOON AVENUES 2 SUN GLADE BLK 7 FLOOR 6 UNIT 21 , SINGAPUR SG SG , 556130',
                         maxLines: 3,),
@@ -120,7 +119,7 @@ class _ShipmentItem extends State<MyShipmentItem> {
                       alignment: Alignment.centerRight,
                       child: new Text('Delivery',
                         style: TextStyle(
-                            fontSize: 18.0,
+                            fontSize: sdp(18.0),
                             color: Colors.green),),
                     ),
                     Align(
@@ -149,21 +148,21 @@ class _ShipmentItem extends State<MyShipmentItem> {
               new RaisedButton(
 
                 padding: EdgeInsets.only(
-                    left: 20.0,
+                    left: sdp(20.0),
                     right: 20.0,
-                    top: 15.0,
-                    bottom: 15.0),
+                    top: sdp(15.0),
+                    bottom: sdp(15.0)),
                 shape: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
+                  borderRadius: BorderRadius.circular(sdp(5.0)),
                   borderSide: BorderSide(
-                      color: greenColor(), width: 1.0),),
+                      color: greenColor(), width: sdp(1.0)),),
                 /*shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0),),*/
                 color: Color(0x00000000),
                 child: Text('GO',
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 25.0,
+                      fontSize: sdp(25.0),
                       fontWeight: FontWeight.w300),
                   textAlign: TextAlign.end,),
                 onPressed: () {
@@ -184,38 +183,38 @@ class _ShipmentItem extends State<MyShipmentItem> {
 
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(sdp(10.0)),
                     child:
                     Icon(Icons.local_shipping, color: Colors.white,),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(sdp(5.0)),
                     child:
                     Text('Packages',
                       style: TextStyle(
-                          color: Colors.white, fontSize: 13.0),),
+                          color: Colors.white, fontSize: sdp(13.0)),),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: 10.0, right: 10.0, left: 10.0),
+                        top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
                     child:
                     Container(
-                      height: 45.0,
-                      width: 45.0,
+                      height: sdp(45.0),
+                      width: sdp(45.0),
                       decoration: new BoxDecoration(
                         border: new Border.all(
                             color: greenColor(),
-                            width: 1.0,
+                            width: sdp(1.0),
                             style: BorderStyle.solid
                         ),
                         borderRadius: new BorderRadius.all(
-                            new Radius.circular(5.0)),
+                            new Radius.circular(sdp(5.0))),
                       ),
                       child: Center(
                         child:
                         Text('1',
                           style: TextStyle(
-                              color: Colors.white, fontSize: 13.0),),),
+                              color: Colors.white, fontSize: sdp(13.0)),),),
                     ),
                   ),
                 ],
@@ -223,39 +222,39 @@ class _ShipmentItem extends State<MyShipmentItem> {
               new Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(sdp(10.0)),
                     child:
                     //Custom Icon help : https://medium.com/flutterpub/how-to-use-custom-icons-in-flutter-834a079d977
                     Icon(MyCustomIcons.hourglass, color: Colors.white,),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(sdp(5.0)),
                     child:
                     Text('ETA',
                       style: TextStyle(
-                          color: Colors.white, fontSize: 13.0),),
+                          color: Colors.white, fontSize: sdp(13.0)),),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: 10.0, right: 10.0, left: 10.0),
+                        top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
                     child:
                     Container(
-                      height: 45.0,
-                      width: 75.0,
+                      height: sdp(45.0),
+                      width: sdp(75.0),
                       decoration: new BoxDecoration(
                         border: new Border.all(
                             color: greenColor(),
-                            width: 1.0,
+                            width: sdp(1.0),
                             style: BorderStyle.solid
                         ),
                         borderRadius: new BorderRadius.all(
-                            new Radius.circular(5.0)),
+                            new Radius.circular(sdp(5.0))),
                       ),
                       child: Center(
                         child:
                         Text('20:48',
                           style: TextStyle(
-                              color: Colors.white, fontSize: 13.0),),),
+                              color: Colors.white, fontSize: sdp(13.0)),),),
                     ),
                   ),
                 ],
@@ -263,38 +262,38 @@ class _ShipmentItem extends State<MyShipmentItem> {
               new Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(sdp(10.0)),
                     child:
                     Icon(Icons.alarm, color: Colors.white,),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(sdp(5.0)),
                     child:
                     Text('Commit',
                       style: TextStyle(
-                          color: Colors.white, fontSize: 13.0),),
+                          color: Colors.white, fontSize: sdp(13.0)),),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: 10.0, right: 10.0, left: 10.0),
+                        top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
                     child:
                     Container(
-                      height: 45.0,
-                      width: 75.0,
+                      height: sdp(45.0),
+                      width: sdp(75.0),
                       decoration: new BoxDecoration(
                         border: new Border.all(
                             color: greenColor(),
-                            width: 1.0,
+                            width: sdp(1.0),
                             style: BorderStyle.solid
                         ),
                         borderRadius: new BorderRadius.all(
-                            new Radius.circular(5.0)),
+                            new Radius.circular(sdp(5.0))),
                       ),
                       child: Center(
                         child:
                         Text('22:00',
                           style: TextStyle(
-                              color: Colors.white, fontSize: 13.0),),),
+                              color: Colors.white, fontSize: sdp(13.0)),),),
                     ),
                   ),
                 ],
@@ -302,37 +301,37 @@ class _ShipmentItem extends State<MyShipmentItem> {
               new Column(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(sdp(10.0)),
                     child:
                     Icon(Icons.alarm_on, color: Colors.white,),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.all(sdp(5.0)),
                     child:
                     Text('Start',
                       style: TextStyle(
-                          color: Colors.white, fontSize: 13.0),),
+                          color: Colors.white, fontSize: sdp(13.0)),),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                        top: 10.0, right: 10.0, left: 10.0),
+                        top: sdp(10.0), right: sdp(10.0), left: sdp(10.0)),
                     child:
                     Container(
-                      height: 45.0,
-                      width: 75.0,
+                      height: sdp(45.0),
+                      width: sdp(75.0),
                       decoration: new BoxDecoration(
                         border: new Border.all(
                             color: greenColor(),
-                            width: 1.0,
+                            width: sdp(1.0),
                             style: BorderStyle.solid
                         ),
                         borderRadius: new BorderRadius.all(
-                            new Radius.circular(5.0)),
+                            new Radius.circular(sdp(5.0))),
                       ),
                       child: Center(
                         child: Text('08:30',
                           style: TextStyle(
-                              color: Colors.white, fontSize: 13.0),
+                              color: Colors.white, fontSize: sdp(13.0)),
                           textAlign: TextAlign.center,),
                       ),
                     ),
@@ -343,7 +342,7 @@ class _ShipmentItem extends State<MyShipmentItem> {
           ) : new Container(),
 
           Padding(
-            padding: EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: sdp(20.0)),
             child: new RaisedButton(
               /*shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(5.0),),*/
@@ -351,7 +350,7 @@ class _ShipmentItem extends State<MyShipmentItem> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Container(
-                    height: 45.0,
+                    height: sdp(45.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment
                           .spaceBetween,
@@ -360,7 +359,7 @@ class _ShipmentItem extends State<MyShipmentItem> {
                         Text('Distance : 4335.54 km',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 16.0),
+                              fontSize: sdp(16.0)),
                           textAlign: TextAlign.left,),
                         Icon(
                           _visibilityDetails
