@@ -49,66 +49,66 @@ class _ShipmentPage extends State<MyShipmentPage> {
         body: Column(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 20.0, left: 30.0),
+              padding: EdgeInsets.only(top: sdp(20.0), left: sdp(30.0)),
               child: Row( //Row 1
                 children: <Widget>[
                   Text('Shipment',
-                    style: TextStyle(color: Colors.white, fontSize: 22.0),
+                    style: TextStyle(color: Colors.white, fontSize: sdp(22.0)),
                     textAlign: TextAlign.left,),
                 ],
               ),
             ),
             Padding(
               //alignment: Alignment.center,
-              padding: EdgeInsets.only(top: 200.0, left: 10.0),
+              padding: EdgeInsets.only(top: sdp(200.0), left: sdp(10.0)),
               child: Row( //Row 2
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Column(
                     children: <Widget>[
                       Container(
-                          width: 120.0,
-                          height: 120.0,
+                          width: sdp(120.0),
+                          height: sdp(120.0),
                           child: Center(child:
                           Text('1',
-                            style: TextStyle(color: Colors.white, fontSize: 40.0),
+                            style: TextStyle(color: Colors.white, fontSize: sdp(40.0)),
                             textAlign: TextAlign.center,),
                           ),
                           decoration: new BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
                                 color: greenColor(),
-                                width: 1.0,
+                                width: sdp(1.0),
                                 style: BorderStyle.solid),
                           )
                       ),
                       Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(sdp(20.0)),
                         child: Text('Remaining'),
                       ),
                     ],
 
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 12.0),
+                    padding: EdgeInsets.only(left: sdp(12.0)),
                     child: new Stack(
                       children: <Widget>[
                         new Positioned(
-                          top: 50.0,
-                          left: 2.0,
+                          top: sdp(50.0),
+                          left: sdp(2.0),
                           child: new Text(
                             'Out', style: TextStyle(
-                              color: Color(0xFFFFFFFF), fontSize: 17.0),),
+                              color: Color(0xFFFFFFFF), fontSize: sdp(17.0)),),
                         ),
 
                         new Container(
-                          width: 80.0,
-                          height: 170.0,
+                          width: sdp(80.0),
+                          height: sdp(170.0),
                           child:
                           Text('/',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 100.0,
+                                fontSize: sdp(100.0),
                                 fontWeight: FontWeight.w200),
                             textAlign: TextAlign.center,),
 
@@ -121,11 +121,11 @@ class _ShipmentPage extends State<MyShipmentPage> {
                           )*/
                         ),
                         new Positioned(
-                          top: 50.0,
-                          right: 10.0,
+                          top: sdp(50.0),
+                          right: sdp(10.0),
                           child: new Text(
                             'Of', style: TextStyle(
-                              color: Color(0xFFFFFFFF), fontSize: 17.0),),
+                              color: Color(0xFFFFFFFF), fontSize: sdp(17.0)),),
                         ),
 
                       ],
@@ -136,23 +136,23 @@ class _ShipmentPage extends State<MyShipmentPage> {
                   Column(
                     children: <Widget>[
                       Container(
-                          width: 120.0,
-                          height: 120.0,
+                          width: sdp(120.0),
+                          height: sdp(120.0),
                           child: Center(child:
                           Text('25',
-                            style: TextStyle(color: Colors.white, fontSize: 40.0),
+                            style: TextStyle(color: Colors.white, fontSize: sdp(40.0)),
                             textAlign: TextAlign.center,),
                           ),
                           decoration: new BoxDecoration(
                             shape: BoxShape.circle,
                             border: Border.all(
                                 color: greenColor(),
-                                width: 1.0,
+                                width: sdp(1.0),
                                 style: BorderStyle.solid),
                           )
                       ),
                       Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(sdp(20.0)),
                         child: Text('Total Shipments'),
                       ),
 
@@ -165,24 +165,24 @@ class _ShipmentPage extends State<MyShipmentPage> {
 
             //Row 3
             Padding(
-              padding: EdgeInsets.only(top: 50.0),
+              padding: EdgeInsets.only(top: sdp(50.0)),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     RaisedButton(
                       padding: EdgeInsets.only(
-                          left: 50.0, right: 50.0, top: 15.0, bottom: 15.0),
+                          left: sdp(50.0), right: sdp(50.0), top: sdp(15.0), bottom: sdp(15.0)),
                       shape: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0),
+                        borderRadius: BorderRadius.circular(sdp(5.0)),
                         borderSide: BorderSide(
-                            color: greenColor(), width: 1.0),),
+                            color: greenColor(), width: sdp(1.0)),),
                       /*shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0),),*/
                       color: Color(0xFF1D1D1D),
                       child: Text('START',
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 25.0,
+                            fontSize: sdp(25.0),
                             fontWeight: FontWeight.w300),),
                       onPressed: () {
                         _OpenMyShipmentData('Opening Shipment Data');
