@@ -10,7 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main(){
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-  runApp(MyApp());
+  runApp(
+      MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     checkSharedPreferences(context);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,        //To remove debug text in app
       theme: ThemeData(
         brightness: Brightness.dark,
         // This is the theme of your application.

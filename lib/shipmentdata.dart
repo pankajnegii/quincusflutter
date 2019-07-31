@@ -57,7 +57,7 @@ class MyShipmentItem extends StatefulWidget {
   _ShipmentItem createState() => _ShipmentItem();
 }
 
-class _ShipmentItem extends State<MyShipmentItem> {
+class _ShipmentItem extends State<MyShipmentItem> with TickerProviderStateMixin {
   bool _visibilityDetails = false;
 
   Widget build(BuildContext context) {
@@ -173,7 +173,15 @@ class _ShipmentItem extends State<MyShipmentItem> {
               ),
             ],
           ),
-          _visibilityDetails ?
+          AnimatedSize(
+            vsync: this,
+            duration: Duration(milliseconds: 300),
+            //reverseDuration: Duration(milliseconds: 300),
+            curve: Curves.fastOutSlowIn,
+            //height: visibilityDetails ? null : 0,
+
+            child:
+            _visibilityDetails ?
           new Row(
 
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -339,6 +347,8 @@ class _ShipmentItem extends State<MyShipmentItem> {
               ),
             ],
           ) : new Container(),
+
+    ),
 
           Padding(
             padding: EdgeInsets.only(top: sdp(20.0)),

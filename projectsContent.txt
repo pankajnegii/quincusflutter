@@ -57,3 +57,10 @@ Solution : calling another class to do define the items
 
 
 -Quincus login successful using login API					(loginapi.dart)
+
+-Animation container : changing color/fix height in seconds				(MapView.dart)
+
+-AnimatedSize : changing height(according to child) in seconds				(MapView.dart)
+
+
+-debugShowCheckedModeBanner: false,        //To remove debug text in app	(main.dart)

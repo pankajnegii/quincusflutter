@@ -56,6 +56,11 @@ Color transparent(){
   return Color(0x16FFFFFF);
 }
 
+//test
+Color transparentRed60(){
+  return Color(0xA6FF0000);
+}
+
 Color transparentBlack60(){
   return Color(0xA6000000);
 }

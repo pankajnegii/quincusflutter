@@ -12,8 +12,9 @@ class MyMapView extends StatefulWidget {
   }
 }
 
-class _MapView extends State<MyMapView> {
+class _MapView extends State<MyMapView> with TickerProviderStateMixin {
   bool visibilityDetails = false;
+  var _bgColor = transparentBlack60();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,8 +78,11 @@ class _MapView extends State<MyMapView> {
             alignment: AlignmentDirectional(-1.0, -1.0),
             //To align the child at the topic
             child: Container(
+              //AnimatedContainer(                                  //https://medium.com/flutter-community/flutter-animated-series-animated-containers-52a5d52c0ad3
               //padding: EdgeInsets.only(bottom: sdp(2)),
-              color: transparentBlack60(),
+              //duration: Duration(seconds: 1),
+              color: _bgColor, //transparentBlack60(),
+
               /*constraints: BoxConstraints(
                   maxHeight: visibilityDetails ? sdp(345.0) : sdp(222.0),
                   maxWidth: sdp(440.0),
@@ -86,7 +90,7 @@ class _MapView extends State<MyMapView> {
                   minHeight: sdp(150.0)),*/
               //padding: EdgeInsets.only(left: 24.0, right: 24.0),
               child: Column(
-                mainAxisSize: MainAxisSize.min,         //height as wrap content
+                mainAxisSize: MainAxisSize.min, //height as wrap content
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.all(sdp(10.0)),
@@ -198,200 +202,207 @@ class _MapView extends State<MyMapView> {
                       ],
                     ), //
                   ),
-                  visibilityDetails
-                      ? new Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            new Column(
+                  AnimatedSize(
+                      vsync: this,
+                      duration: Duration(milliseconds: 300),
+                      //reverseDuration: Duration(milliseconds: 300),
+                      curve: Curves.fastOutSlowIn,
+                      //height: visibilityDetails ? null : 0,
+
+                      child: visibilityDetails
+                          ? new Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(10.0)),
-                                  child: Icon(
-                                    Icons.local_shipping,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(5.0)),
-                                  child: Text(
-                                    'Packages',
-                                    style: TextStyle(
+                                new Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(10.0)),
+                                      child: Icon(
+                                        Icons.local_shipping,
                                         color: Colors.white,
-                                        fontSize: sdp(13.0)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: sdp(10.0),
-                                      right: sdp(10.0),
-                                      left: sdp(10.0)),
-                                  child: Container(
-                                    height: sdp(45.0),
-                                    width: sdp(45.0),
-                                    decoration: new BoxDecoration(
-                                      border: new Border.all(
-                                          color: greenColor(),
-                                          width: sdp(1.0),
-                                          style: BorderStyle.solid),
-                                      borderRadius: new BorderRadius.all(
-                                          new Radius.circular(sdp(5.0))),
+                                      ),
                                     ),
-                                    child: Center(
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(5.0)),
                                       child: Text(
-                                        '1',
+                                        'Packages',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: sdp(13.0)),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            new Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(10.0)),
-                                  child:
-                                      //Custom Icon help : https://medium.com/flutterpub/how-to-use-custom-icons-in-flutter-834a079d977
-                                      Icon(
-                                    MyCustomIcons.hourglass,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(5.0)),
-                                  child: Text(
-                                    'ETA',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: sdp(13.0)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: sdp(10.0),
-                                      right: sdp(10.0),
-                                      left: sdp(10.0)),
-                                  child: Container(
-                                    height: sdp(45.0),
-                                    width: sdp(75.0),
-                                    decoration: new BoxDecoration(
-                                      border: new Border.all(
-                                          color: greenColor(),
-                                          width: sdp(1.0),
-                                          style: BorderStyle.solid),
-                                      borderRadius: new BorderRadius.all(
-                                          new Radius.circular(sdp(5.0))),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: sdp(10.0),
+                                          right: sdp(10.0),
+                                          left: sdp(10.0)),
+                                      child: Container(
+                                        height: sdp(45.0),
+                                        width: sdp(45.0),
+                                        decoration: new BoxDecoration(
+                                          border: new Border.all(
+                                              color: greenColor(),
+                                              width: sdp(1.0),
+                                              style: BorderStyle.solid),
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(sdp(5.0))),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            '1',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: sdp(13.0)),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    child: Center(
+                                  ],
+                                ),
+                                new Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(10.0)),
+                                      child:
+                                          //Custom Icon help : https://medium.com/flutterpub/how-to-use-custom-icons-in-flutter-834a079d977
+                                          Icon(
+                                        MyCustomIcons.hourglass,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(5.0)),
                                       child: Text(
-                                        '20:48',
+                                        'ETA',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: sdp(13.0)),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            new Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(10.0)),
-                                  child: Icon(
-                                    Icons.alarm,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(5.0)),
-                                  child: Text(
-                                    'Commit',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: sdp(13.0)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: sdp(10.0),
-                                      right: sdp(10.0),
-                                      left: sdp(10.0)),
-                                  child: Container(
-                                    height: sdp(45.0),
-                                    width: sdp(75.0),
-                                    decoration: new BoxDecoration(
-                                      border: new Border.all(
-                                          color: greenColor(),
-                                          width: sdp(1.0),
-                                          style: BorderStyle.solid),
-                                      borderRadius: new BorderRadius.all(
-                                          new Radius.circular(sdp(5.0))),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: sdp(10.0),
+                                          right: sdp(10.0),
+                                          left: sdp(10.0)),
+                                      child: Container(
+                                        height: sdp(45.0),
+                                        width: sdp(75.0),
+                                        decoration: new BoxDecoration(
+                                          border: new Border.all(
+                                              color: greenColor(),
+                                              width: sdp(1.0),
+                                              style: BorderStyle.solid),
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(sdp(5.0))),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            '20:48',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: sdp(13.0)),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    child: Center(
+                                  ],
+                                ),
+                                new Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(10.0)),
+                                      child: Icon(
+                                        Icons.alarm,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(5.0)),
                                       child: Text(
-                                        '22:00',
+                                        'Commit',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: sdp(13.0)),
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            new Column(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(10.0)),
-                                  child: Icon(
-                                    Icons.alarm_on,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.all(sdp(5.0)),
-                                  child: Text(
-                                    'Start',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: sdp(13.0)),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      top: sdp(10.0),
-                                      right: sdp(10.0),
-                                      left: sdp(10.0)),
-                                  child: Container(
-                                    height: sdp(45.0),
-                                    width: sdp(75.0),
-                                    decoration: new BoxDecoration(
-                                      border: new Border.all(
-                                          color: greenColor(),
-                                          width: sdp(1.0),
-                                          style: BorderStyle.solid),
-                                      borderRadius: new BorderRadius.all(
-                                          new Radius.circular(sdp(5.0))),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: sdp(10.0),
+                                          right: sdp(10.0),
+                                          left: sdp(10.0)),
+                                      child: Container(
+                                        height: sdp(45.0),
+                                        width: sdp(75.0),
+                                        decoration: new BoxDecoration(
+                                          border: new Border.all(
+                                              color: greenColor(),
+                                              width: sdp(1.0),
+                                              style: BorderStyle.solid),
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(sdp(5.0))),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            '22:00',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: sdp(13.0)),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    child: Center(
+                                  ],
+                                ),
+                                new Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(10.0)),
+                                      child: Icon(
+                                        Icons.alarm_on,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(sdp(5.0)),
                                       child: Text(
-                                        '08:30',
+                                        'Start',
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: sdp(13.0)),
-                                        textAlign: TextAlign.center,
                                       ),
                                     ),
-                                  ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                          top: sdp(10.0),
+                                          right: sdp(10.0),
+                                          left: sdp(10.0)),
+                                      child: Container(
+                                        height: sdp(45.0),
+                                        width: sdp(75.0),
+                                        decoration: new BoxDecoration(
+                                          border: new Border.all(
+                                              color: greenColor(),
+                                              width: sdp(1.0),
+                                              style: BorderStyle.solid),
+                                          borderRadius: new BorderRadius.all(
+                                              new Radius.circular(sdp(5.0))),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            '08:30',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: sdp(13.0)),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
-                          ],
-                        )
-                      : new Container(),
+                            )
+                          : new Container()),
                   Padding(
                     padding: EdgeInsets.only(top: sdp(10.0)),
                     child: new RaisedButton(
@@ -458,6 +469,7 @@ class _MapView extends State<MyMapView> {
   void _changeVisibilityDetails() {
     setState(() {
       visibilityDetails = !visibilityDetails;
+      //_bgColor = visibilityDetails ? transparentRed60() : transparentBlack60();
     });
   }
 }
